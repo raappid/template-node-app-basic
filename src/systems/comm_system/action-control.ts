@@ -93,7 +93,7 @@ class ActionControl implements IActionControl
 
     }
 
-    subscribe(eventName:string, callback:(...args:any[])=>any,context:any):void {
+    subscribe(eventName:string, callback:(...args:any[])=>any,context?:any):void {
 
         if(!isValidActionOrEventName(eventName))
             throw new Error(Errors.ERROR_SUBSCRIBING_EVENT_NAME_NOT_TYPE_STRING);

@@ -388,7 +388,7 @@ describe('action-control', function() {
         });
 
 
-        it('should call the handler with right context if the context is passed while registering', function(done) {
+        it('should call the handler with right context if the context is passed while subscribing', function(done) {
 
             var handlerContext ={};
             var handler = function(){

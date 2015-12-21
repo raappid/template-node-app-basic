@@ -2,5 +2,6 @@
 
 export function sayHi():Promise<string>
 {
-    return null;
+    console.log("hi-service saying hi...");
+    return Promise.resolve("hi");
 }

@@ -7,7 +7,7 @@ export interface IActionControl
     hasAction(actionName:string):boolean;
 
     publish(eventName:string, ...args: any[]):void;
-    subscribe(eventName:string,callback: (...args:any[]) => any,context:any):void;
+    subscribe(eventName:string,callback: (...args:any[]) => any,context?:any):void;
     unSubscribe(eventName:string,callback:Function):void;
     hasSubscribers(eventName:string):boolean;
 }

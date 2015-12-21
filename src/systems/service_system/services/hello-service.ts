@@ -2,5 +2,6 @@
 
 export function sayHello():string
 {
-    return null;
+    console.log("hello-service saying hello...");
+    return "hello";
 }

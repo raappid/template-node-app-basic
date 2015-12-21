@@ -1,14 +1,16 @@
 
-import hello = require("../services/hello-service");
-import hi = require("../services/hi-service");
+/// <reference path="../../../typings/tsd.d.ts" />
 
 
-/**
- *
- * @param hmm
- * @returns {null}
- */
-export function sayHelloAndHi(hmm):Promise<string>
+import helloService = require("../services/hello-service");
+import hiService = require("../services/hi-service");
+
+
+export function sayHelloAndHi():Promise<string>
 {
-    return null;
+    let hello:string = helloService.sayHello();
+
+    return hiService.sayHi().then((result)=>{
+        return hello + " " + result;
+    });
 }
