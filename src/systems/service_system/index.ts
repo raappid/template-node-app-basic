@@ -16,4 +16,4 @@ export class Event
 }
 
 //register actions
-
+actionControl.registerAction(Action.SAY_HI_AND_HELLO,myManager.sayHello);
