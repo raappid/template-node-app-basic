@@ -2,9 +2,6 @@
   "author": {
     "name": ""
   },
-  "files": [
-    "dist"
-  ],
   "main": "dist/main.js",
   "dependencies": {},
   "description": "",
