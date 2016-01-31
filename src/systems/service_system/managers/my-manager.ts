@@ -1,5 +1,5 @@
 
-/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../../../../typings/main.d.ts" />
 
 import myAssistant = require("../assistants/my-assistant");
 import reject = Promise.reject;

@@ -1,4 +1,4 @@
-/// <reference path="../../../../src/typings/tsd.d.ts" />
+/// <reference path="../../../../typings/main.d.ts" />
 
 import chai = require('chai');
 import myAssistant = require("../../../../src/systems/service_system/assistants/my-assistant");

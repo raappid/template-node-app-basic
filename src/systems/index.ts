@@ -1,6 +1,6 @@
 
 
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../../typings/main.d.ts" />
 
 export * from "./comm_system/index";
 export * from "./service_system/index";
