@@ -3,11 +3,12 @@
     "name": ""
   },
   "main": "dist/main.js",
-  "dependencies": {},
+  "typings": "./typings/main.d.ts",
   "description": "",
   "devDependencies": {
     "chai": "^3.4.0",
     "coveralls": "^2.11.4",
+    "cpy": "^4.0.0",
     "cross-spawn-async": "^2.1.6",
     "del": "^2.0.2",
     "istanbul": "^0.4.1",

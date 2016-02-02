@@ -1,5 +1,3 @@
-/// <reference path="../../../typings/main.d.ts" />
-
 
 import chai = require('chai');
 import sinon = require('sinon');

@@ -1,7 +1,4 @@
 
-/// <reference path="../../../../typings/main.d.ts" />
-
-
 import helloService = require("../services/hello-service");
 import hiService = require("../services/hi-service");
 

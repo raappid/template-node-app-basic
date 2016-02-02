@@ -5,13 +5,13 @@
     "noImplicitAny": false,
     "noLib": false,
     "emitDecoratorMetadata":true,
-    "sourceMap": true,
     "experimentalDecorators":true,
     "noEmitOnError":true,
     "moduleResolution":"node"
   },
   "exclude": [
     "node_modules",
-    "typings"
+    "typings/browser",
+    "typings/browser.d.ts"
   ]
 }
