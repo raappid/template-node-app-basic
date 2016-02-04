@@ -210,11 +210,11 @@ describe('action-control', function() {
 
         });
 
-        it('should call the handler with global context if no context is passed while registering', function(done) {
+        it('should call the handler with undefined context if no context is passed while registering', function(done) {
 
             var handler = function(){
 
-                expect(this).to.equal(global);
+                expect(this).to.equal(undefined);
                 done();
             };
 
@@ -400,12 +400,12 @@ describe('action-control', function() {
 
         });
 
-        it('should call the handler with global context if no context is passed while subscribing', function(done) {
+        it('should call the handler with undefined context if no context is passed while subscribing', function(done) {
 
 
             var handler = function(){
 
-                expect(this).to.equal(global);
+                expect(this).to.equal(undefined);
                 done();
             };
 
