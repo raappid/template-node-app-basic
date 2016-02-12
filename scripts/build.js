@@ -37,15 +37,18 @@ function build(isRelease){
         else
         {
 
-            cpy(["**/*.js"],"../dist",{cwd:process.cwd()+"/src",parents: true, nodir: true}).then(function(){
+            if(isRelease)
+            {
+                cpy(["**/*.js"],"../dist",{cwd:process.cwd()+"/src",parents: true, nodir: true}).then(function(){
 
-                process.exit(0);
+                    process.exit(0);
 
-            },function(err){
+                },function(err){
 
-                console.log(err);
-                process.exit(1);
-            })
+                    console.log(err);
+                    process.exit(1);
+                })
+            }
         }
     });
 
