@@ -2,24 +2,28 @@
   "author": {
     "name": ""
   },
+  "files": [
+    "dist",
+    "npm-shrinkwrap.json"
+  ],
   "main": "dist/main.js",
   "typings": "./typings/main.d.ts",
   "description": "",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.6",
-    "cpy": "^4.0.0",
-    "cross-spawn-async": "^2.1.8",
-    "del": "^2.2.0",
-    "istanbul": "^0.4.2",
-    "minimist": "^1.2.0",
-    "mocha": "^2.4.5",
-    "mock-stdin": "^0.3.0",
-    "sinon": "^1.17.3",
-    "sinon-as-promised": "^4.0.0",
-    "sinon-chai": "^2.8.0",
-    "typescript": "^1.8.0",
-    "typings": "^0.6.6"
+    "chai": "3.5.0",
+    "coveralls": "2.11.6",
+    "cpy": "4.0.0",
+    "cross-spawn-async": "2.1.8",
+    "del": "2.2.0",
+    "istanbul": "0.4.2",
+    "minimist": "1.2.0",
+    "mocha": "2.4.5",
+    "mock-stdin": "0.3.0",
+    "sinon": "1.17.3",
+    "sinon-as-promised": "4.0.0",
+    "sinon-chai": "2.8.0",
+    "typescript": "1.8.0",
+    "typings": "0.6.6"
   },
   "engines": {
     "node": ">=5.0.0"
