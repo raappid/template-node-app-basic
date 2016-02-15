@@ -3,8 +3,7 @@
     "name": ""
   },
   "files": [
-    "dist",
-    "npm-shrinkwrap.json"
+    "dist"
   ],
   "main": "dist/main.js",
   "typings": "./typings/main.d.ts",
