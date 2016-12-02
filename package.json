@@ -9,23 +9,21 @@
   "typings": "./typings/main.d.ts",
   "description": "",
   "devDependencies": {
-    "chai": "3.5.0",
-    "coveralls": "2.11.6",
-    "cpy": "4.0.0",
-    "cross-spawn-async": "2.1.8",
-    "del": "2.2.0",
-    "istanbul": "0.4.2",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "6.0.46",
+    "coveralls": "2.11.15",
+    "cpy": "5.0.0",
+    "cross-spawn": "5.0.1",
+    "del": "2.2.2",
+    "istanbul": "^1.1.0-alpha.1",
+    "jasmine": "2.5.2",
+    "jasmine-spec-reporter": "^2.7.0",
     "minimist": "1.2.0",
-    "mocha": "2.4.5",
-    "mock-stdin": "0.3.0",
-    "sinon": "1.17.3",
-    "sinon-as-promised": "4.0.0",
-    "sinon-chai": "2.8.0",
-    "typescript": "1.8.0",
-    "typings": "0.6.6"
+    "ts-node": "1.7.0",
+    "typescript": "2.0.10"
   },
   "engines": {
-    "node": ">=5.0.0"
+    "node": ">=6.9.1"
   },
   "homepage": "",
   "licenses": [],

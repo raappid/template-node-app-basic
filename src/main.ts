@@ -1,22 +1,16 @@
 
 
-import {actionControl,Action,Event} from "./systems/index"
+import {EventConstants, Actions} from "./service_system/constants";
 
-
+import {myStore, myManager} from "./service_system/index";
 //subscribing to an event
 
-actionControl.subscribe(Event.HI_HELLO,(result:string)=>{
-
-   console.log("Event Received:\n"+result);
+myStore.addListener(EventConstants.MyStore.HI_HELLO,(result)=>{
+    console.log("My Store data updated: " + result)
 });
 
 //performing an action
-actionControl.perform(Action.SAY_HI_AND_HELLO).then((result:string)=>{
-    console.log("Action Performed:\n"+result);
-    console.log(result);
-
-    process.exit(0);
-});
+myManager.sayHello();
 
 
 

@@ -1,8 +1,8 @@
 sudo: false
 language: node_js
 node_js:
-  - "5.0.0"
-  - "5.1.0"
+  - "6.9.1"
+  - "7.0.0"
 install:
   - npm run install-deps
 after_script:

@@ -1,8 +1,9 @@
 
 var util = require('./util');
+process.env.JASMINE_CONFIG_PATH="jasmine.json";
 
 
-util.series(["npm run build","istanbul cover node_modules/mocha/bin/_mocha test/**/*.js --recursive"], function(err){
+util.series(["ts-node node_modules/.bin/istanbul cover -e .ts scripts/jasmine-ts.js"], function(err){
 
     if(err)
     {

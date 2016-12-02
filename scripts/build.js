@@ -46,6 +46,9 @@ function build(isRelease){
                 },function(err){
 
                     console.log(err);
+
+                    require("./clean");
+
                     process.exit(1);
                 })
             }

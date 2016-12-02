@@ -3,15 +3,16 @@
     "target": "es5",
     "module": "commonjs",
     "noImplicitAny": false,
+    "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata":true,
     "experimentalDecorators":true,
+    "skipLibCheck":true,
     "noEmitOnError":true,
+    "lib": ["es5","es6","es7"],
     "moduleResolution":"node"
   },
   "exclude": [
-    "node_modules",
-    "typings/browser",
-    "typings/browser.d.ts"
+    "node_modules"
   ]
 }
