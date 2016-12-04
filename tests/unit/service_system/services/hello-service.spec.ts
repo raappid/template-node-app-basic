@@ -1,18 +1,17 @@
 
-import helloService = require("../../../../src/service_system/services/hello-service")
-import Spy = jasmine.Spy;
+import helloService = require("../../../../src/service_system/services/hello-service");
 
-describe('hello-service Test cases', () => {
+describe('hello-service Specs', () => {
 
     describe("sayHello",()=>{
 
-        it("should return hello",()=>{
+        it("should return hello",function(){
 
-            var logSpy:Spy = spyOn(console,"log");
+            var logSpy = this.sinon.spy(console,"log");
 
             var result:string = helloService.sayHello();
-            expect(result).toEqual("hello");
-            expect(logSpy).toHaveBeenCalledWith("hello-service saying hello...");
+            expect(result).to.equal("hello");
+            expect(logSpy.calledWith("hello-service saying hello...")).to.equal(true);
         });
 
     });

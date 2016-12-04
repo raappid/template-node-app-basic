@@ -1,9 +1,10 @@
 
-import any = jasmine.any;
-import Spy = jasmine.Spy;
 
 import {Errors} from "../../../src/comm_system/constants";
 import {ActionDispatcher} from "../../../src/comm_system/ActionDispatcher";
+
+import Chai = require("chai");
+var expect = Chai.expect;
 
 describe('ActionDispatcher', function() {
 
@@ -29,17 +30,17 @@ describe('ActionDispatcher', function() {
             throws = function() {
                 actionDispatcher.registerAction({});
             };
-            expect(throws).toThrowError(Errors.ERROR_REGISTERING_ACTION_NAME_NOT_TYPE_STRING);
+            expect(throws).to.throw(Errors.ERROR_REGISTERING_ACTION_NAME_NOT_TYPE_STRING);
 
             throws = function() {
                 actionDispatcher.registerAction();
             };
-            expect(throws).toThrowError(Errors.ERROR_REGISTERING_ACTION_NAME_NOT_TYPE_STRING);
+            expect(throws).to.throw(Errors.ERROR_REGISTERING_ACTION_NAME_NOT_TYPE_STRING);
 
             throws = function() {
                 actionDispatcher.registerAction(null);
             };
-            expect(throws).toThrowError(Errors.ERROR_REGISTERING_ACTION_NAME_NOT_TYPE_STRING);
+            expect(throws).to.throw(Errors.ERROR_REGISTERING_ACTION_NAME_NOT_TYPE_STRING);
 
             done();
         });
@@ -50,13 +51,13 @@ describe('ActionDispatcher', function() {
                 actionDispatcher.registerAction("action");
             };
 
-            expect(throws).toThrowError(Errors.ERROR_REGISTERING_ACTION_NO_HANDLER_GIVEN);
+            expect(throws).to.throw(Errors.ERROR_REGISTERING_ACTION_NO_HANDLER_GIVEN);
 
             throws = function() {
                 actionDispatcher.registerAction("event",null);
             };
 
-            expect(throws).toThrowError(Errors.ERROR_REGISTERING_ACTION_NO_HANDLER_GIVEN);
+            expect(throws).to.throw(Errors.ERROR_REGISTERING_ACTION_NO_HANDLER_GIVEN);
 
             done();
         });
@@ -67,7 +68,7 @@ describe('ActionDispatcher', function() {
                 actionDispatcher.registerAction("event",{});
             };
 
-            expect(throws).toThrowError(Errors.ERROR_REGISTERING_ACTION_HANDLER_NOT_TYPE_FUNCTION);
+            expect(throws).to.throw(Errors.ERROR_REGISTERING_ACTION_HANDLER_NOT_TYPE_FUNCTION);
             done();
         });
 
@@ -78,7 +79,7 @@ describe('ActionDispatcher', function() {
                 actionDispatcher.registerAction("event",function(){});
             };
 
-            expect(throws).toThrowError(Errors.ERROR_REGISTERING_ACTION_ONLY_ONE_HANDLER_ALLOWED);
+            expect(throws).to.throw(Errors.ERROR_REGISTERING_ACTION_ONLY_ONE_HANDLER_ALLOWED);
             done();
         });
     });
@@ -88,17 +89,17 @@ describe('ActionDispatcher', function() {
             throws = function() {
                 actionDispatcher.unregisterAction({});
             };
-            expect(throws).toThrowError(Errors.ERROR_UNREGISTERING_ACTION_NAME_NOT_TYPE_STRING);
+            expect(throws).to.throw(Errors.ERROR_UNREGISTERING_ACTION_NAME_NOT_TYPE_STRING);
 
             throws = function() {
                 actionDispatcher.unregisterAction();
             };
-            expect(throws).toThrowError(Errors.ERROR_UNREGISTERING_ACTION_NAME_NOT_TYPE_STRING);
+            expect(throws).to.throw(Errors.ERROR_UNREGISTERING_ACTION_NAME_NOT_TYPE_STRING);
 
             throws = function() {
                 actionDispatcher.unregisterAction(null);
             };
-            expect(throws).toThrowError(Errors.ERROR_UNREGISTERING_ACTION_NAME_NOT_TYPE_STRING);
+            expect(throws).to.throw(Errors.ERROR_UNREGISTERING_ACTION_NAME_NOT_TYPE_STRING);
 
             done();
         });
@@ -109,13 +110,13 @@ describe('ActionDispatcher', function() {
                 actionDispatcher.unregisterAction("event");
             };
 
-            expect(throws).toThrowError(Errors.ERROR_UNREGISTERING_ACTION_NO_HANDLER_GIVEN);
+            expect(throws).to.throw(Errors.ERROR_UNREGISTERING_ACTION_NO_HANDLER_GIVEN);
 
             throws = function() {
                 actionDispatcher.unregisterAction("event",null);
             };
 
-            expect(throws).toThrowError(Errors.ERROR_UNREGISTERING_ACTION_NO_HANDLER_GIVEN);
+            expect(throws).to.throw(Errors.ERROR_UNREGISTERING_ACTION_NO_HANDLER_GIVEN);
 
             done();
         });
@@ -125,7 +126,7 @@ describe('ActionDispatcher', function() {
             throws = function() {
                 actionDispatcher.unregisterAction("event",{});
             };
-            expect(throws).toThrowError(Errors.ERROR_UNREGISTERING_ACTION_HANDLER_NOT_TYPE_FUNCTION);
+            expect(throws).to.throw(Errors.ERROR_UNREGISTERING_ACTION_HANDLER_NOT_TYPE_FUNCTION);
             done();
         });
 
@@ -137,7 +138,7 @@ describe('ActionDispatcher', function() {
             }
             actionDispatcher.registerAction("action",handler);
             actionDispatcher.unregisterAction("action",handler);
-            expect(actionDispatcher.hasAction("action")).toBe(false);
+            expect(actionDispatcher.hasAction("action")).to.equal(false);
             done();
         });
     });
@@ -148,7 +149,7 @@ describe('ActionDispatcher', function() {
             throws = function() {
                 actionDispatcher.perform({});
             };
-            expect(throws).toThrowError(Errors.ERROR_TAKING_ACTION_ACTION_NAME_NOT_TYPE_STRING);
+            expect(throws).to.throw(Errors.ERROR_TAKING_ACTION_ACTION_NAME_NOT_TYPE_STRING);
             done();
         });
 
@@ -169,9 +170,9 @@ describe('ActionDispatcher', function() {
             var paramB = {};
             var handler = function(param1,param2){
 
-                expect(arguments.length).toEqual(2);
-                expect(param1).toEqual(paramA);
-                expect(param2).toEqual(paramB);
+                expect(arguments.length).to.equal(2);
+                expect(param1).to.equal(paramA);
+                expect(param2).to.equal(paramB);
                 done();
             };
 
@@ -188,7 +189,7 @@ describe('ActionDispatcher', function() {
             var paramB = {};
             var handler = function(param1,param2){
 
-                expect(this).toEqual(handlerContext);
+                expect(this).to.equal(handlerContext);
                 done();
             };
 
@@ -202,7 +203,7 @@ describe('ActionDispatcher', function() {
 
             var handler = function(){
 
-                expect(this).toEqual(undefined);
+                expect(this).to.equal(undefined);
                 done();
             };
 
@@ -220,7 +221,7 @@ describe('ActionDispatcher', function() {
 
             var result = actionDispatcher.perform(action, "humm");
 
-            expect(result instanceof Promise).toEqual(true);
+            expect(result instanceof Promise).to.equal(true);
             done();
         });
 
@@ -233,7 +234,7 @@ describe('ActionDispatcher', function() {
 
             var result = actionDispatcher.perform(action, "humm");
 
-            expect(result instanceof Promise).toEqual(true);
+            expect(result instanceof Promise).to.equal(true);
             done();
         });
 
@@ -246,11 +247,11 @@ describe('ActionDispatcher', function() {
 
             var result = actionDispatcher.perform(action, "humm");
 
-            expect(result instanceof Promise).toEqual(true);
+            expect(result instanceof Promise).to.equal(true);
 
             result.then(null,(error)=>{
-                expect(error).toEqual(jasmine.any(Error));
-                expect(error.message).toEqual("yay");
+                expect(error).to.be.instanceof(Error);
+                expect(error.message).to.equal("yay");
                 done();
             })
 
@@ -262,12 +263,12 @@ describe('ActionDispatcher', function() {
         it('should return true if action registered', function(done) {
             var action = registerAction(function(){});
 
-            expect(actionDispatcher.hasAction(action)).toBe(true);
+            expect(actionDispatcher.hasAction(action)).to.equal(true);
             done();
         });
 
         it('should return false if no action registered', function(done) {
-            expect(actionDispatcher.hasAction("ewrwer")).toBe(false);
+            expect(actionDispatcher.hasAction("ewrwer")).to.equal(false);
             done();
         });
     });

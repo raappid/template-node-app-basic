@@ -1,11 +1,38 @@
 sudo: false
+
 language: node_js
+
+env:
+  - NODE_ENV=CI
+
 node_js:
   - "6.9.1"
   - "7.0.0"
+
+branches:
+  only:
+  - master
+  - production
+
 install:
   - npm run install-deps
+
 after_script:
-  - npm run coverage
+  - npm run report-coverage
+
+before_deploy:
+  - npm run build-release
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API_KEY
+  app:
+    production: $HEROKU_WEB_APP_NAME
+  skip_cleanup: true
+  on:
+    branch: production
+    node: 6.9.1
+
 git:
   depth: 10

@@ -3,7 +3,7 @@ var util = require('./util');
 process.env.JASMINE_CONFIG_PATH="jasmine.json";
 
 
-util.series(["ts-node node_modules/.bin/istanbul cover -e .ts scripts/jasmine-ts.js"], function(err){
+util.series(["ts-node node_modules/.bin/istanbul cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" -x \"*.test.ts\" node_modules/mocha/bin/_mocha --require tests/helpers/chai-sinon.ts tests/**/*.test.ts tests/**/*.spec.ts --recursive"], function(err){
 
     if(err)
     {

@@ -2,38 +2,33 @@
 import helloService = require("../../../../src/service_system/services/hello-service");
 import hiService = require("../../../../src/service_system/services/hi-service");
 import myAssistant = require("../../../../src/service_system/assistants/my-assistant");
-import Spy = jasmine.Spy;
 
 
-describe('my-assistant Test cases', () => {
+describe('my-assistant Specs', () => {
 
     describe("sayHelloAndHi",()=>{
 
-        beforeEach(()=>{
 
-            spyOn(helloService,"sayHello").and.returnValue("helloStub");
+        it("should resolve with hello and hi",function (done){
+            var helloStub = this.sinon.stub(helloService,"sayHello").returns("helloStub");
+            var hiStub = this.sinon.stub(hiService,"sayHi").returns(Promise.resolve("hiStub"));
 
-        });
-
-        it("should resolve with hello and hi",(done)=>{
-
-            spyOn(hiService,"sayHi").and.returnValue(Promise.resolve("hiStub"));
             myAssistant.sayHelloAndHi().then((result)=>{
 
-                expect(result).toEqual("helloStub hiStub");
+                expect(result).to.equal("helloStub hiStub");
                 done();
             })
 
         });
 
-        it("should reject with error, if hi service rejected with error",(done)=>{
+        it("should reject with error, if hi service rejected with error",function(done){
 
-            spyOn(hiService,"sayHi").and.returnValue(Promise.reject(new Error("yay")));
+            this.sinon.stub(hiService,"sayHi").returns(Promise.reject(new Error("yay")));
 
             myAssistant.sayHelloAndHi().then(null,(error)=>{
 
-                expect(error).toEqual(jasmine.any(Error));
-                expect(error.message).toEqual("yay");
+                expect(error).to.be.instanceof(Error);
+                expect(error.message).to.equal("yay");
                 done();
             })
         });

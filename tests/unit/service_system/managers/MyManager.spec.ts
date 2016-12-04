@@ -2,7 +2,7 @@
 import myAssistant = require("../../../../src/service_system/assistants/my-assistant");
 import {MyManager} from "../../../../src/service_system/managers/MyManager";
 
-describe('MyManager Test cases', () => {
+describe('MyManager Specs', () => {
 
     var myManager:IMyManager;
 
@@ -11,26 +11,26 @@ describe('MyManager Test cases', () => {
     });
     describe("sayHello",()=>{
 
-        it("should resolve with hello and hi",(done)=>{
+        it("should resolve with hello and hi",function(done){
 
-            spyOn(myAssistant,"sayHelloAndHi").and.returnValue(Promise.resolve("humm"));
+            this.sinon.stub(myAssistant,"sayHelloAndHi").returns(Promise.resolve("humm"));
 
             myManager.sayHello().then((result)=>{
 
-                expect(result).toEqual("humm");
+                expect(result).to.equal("humm");
                 done();
             })
 
         });
 
-        it("should reject with error, if assistant rejects with error",(done)=>{
+        it("should reject with error, if assistant rejects with error",function(done){
 
-            spyOn(myAssistant,"sayHelloAndHi").and.returnValue(Promise.reject(new Error("yay")));
+            this.sinon.stub(myAssistant,"sayHelloAndHi").returns(Promise.reject(new Error("yay")));
 
             myManager.sayHello().then(null,(error)=>{
 
-                expect(error).toEqual(jasmine.any(Error));
-                expect(error.message).toEqual("yay");
+                expect(error).to.be.instanceof(Error);
+                expect(error.message).to.equal("yay");
                 done();
             })
         });
