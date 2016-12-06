@@ -1,23 +1,11 @@
 
 
 var util = require('./util');
-var argv = require('minimist')(process.argv.slice(2));
 var cpy = require("cpy");
 
+var isProductionBuild = process.env.NODE_ENV == "production";
 
-if(argv._ && argv._.length > 0) //look release build
-{
-    var subCommand = argv._[0];
-    if(subCommand.toLowerCase() === "release")
-    {
-        build(true);
-    }
-
-}
-else //do dev build
-{
-    build();
-}
+build(isProductionBuild);
 
 function build(isRelease){
 
